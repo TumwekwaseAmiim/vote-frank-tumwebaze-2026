@@ -1,0 +1,220 @@
+/* General Styles */
+body { 
+  margin:0; 
+  font-family: Arial, sans-serif; 
+  background:#fff; 
+  color:#000; 
+}
+h1, h2, h3 { 
+  color:#FFD700; 
+  text-align:center; 
+  margin-bottom:20px; 
+}
+p { 
+  text-align:center; 
+  font-size:1.1em; 
+  margin:15px 20px; 
+}
+button { 
+  cursor:pointer; 
+  border:none; 
+  border-radius:8px; 
+  font-size:16px; 
+  padding:12px 25px; 
+  background:#000; 
+  color:#FFD700; 
+  transition: transform 0.3s; 
+}
+button:hover { 
+  transform: scale(1.05); 
+}
+
+/* Hero Section */
+#hero { 
+  background:#000; 
+  color:#FFD700; 
+  padding:60px 20px; 
+  text-align:center; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+}
+#nrm-logo { 
+  width:15%; 
+  max-width:100px; 
+  margin-bottom:15px; 
+  height:auto; 
+}
+#frank-main { 
+  width:40%; 
+  max-width:300px; 
+  border-radius:10px; 
+  animation: float 3s ease-in-out infinite; 
+  height:auto; 
+}
+@keyframes float { 
+  0%,100%{transform:translateY(0);} 
+  50%{transform:translateY(-15px);} 
+}
+
+/* Gallery Section */
+#gallery { 
+  text-align:center; 
+  padding:50px 20px; 
+  background:#fff; 
+}
+.gallery-images { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:15px; 
+}
+.gallery-images figure { 
+  margin:0; 
+  width:30%; 
+  max-width:300px; 
+  text-align:center; 
+}
+.gallery-images img { 
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  border-radius:10px; 
+  transition: transform 0.3s; 
+}
+.gallery-images img:hover { 
+  transform: scale(1.05); 
+}
+.gallery-images figcaption { 
+  margin-top:8px; 
+  font-size:0.9em; 
+  color:#000; 
+}
+
+/* Achievements Section */
+#achievements { 
+  padding:50px 20px; 
+  background:#fff; 
+}
+
+/* Why Vote Section */
+#why-vote { 
+  background:#000; 
+  color:#FFD700; 
+  padding:50px 20px; 
+}
+
+/* Vote Now Section */
+#vote-now { 
+  background:#FFD700; 
+  color:#000; 
+  text-align:center; 
+  padding:50px 20px; 
+}
+#vote-now button { 
+  animation: bounce 2s infinite; 
+}
+@keyframes bounce { 
+  0%,100%{transform:translateY(0);} 
+  50%{transform:translateY(-10px);} 
+}
+
+/* Social Follow Section */
+#follow { 
+  background:#000; 
+  color:#FFD700; 
+  text-align:center; 
+  padding:50px 20px; 
+}
+.social-buttons { 
+  display:flex; 
+  justify-content:center; 
+  flex-wrap:wrap; 
+  gap:15px; 
+}
+.social-buttons a { 
+  display:inline-block; 
+  padding:10px 20px; 
+  color:#fff; 
+  border-radius:8px; 
+  text-decoration:none; 
+  transition: transform 0.3s; 
+  text-align:center; 
+  font-size:1em;
+}
+.social-buttons a:hover { 
+  transform: scale(1.1); 
+}
+.social-buttons a.whatsapp { 
+  background:#25D366; 
+}
+.social-buttons a.tiktok { 
+  background:#000; 
+}
+
+/* Share This Site Section */
+#share-site { 
+  background:#fff; 
+  text-align:center; 
+  padding:50px 20px; 
+}
+.share-buttons { 
+  display:flex; 
+  justify-content:center; 
+  flex-wrap:wrap; 
+  gap:15px; 
+}
+.share-buttons a { 
+  display:inline-block; 
+  padding:10px 20px; 
+  border-radius:8px; 
+  text-decoration:none; 
+  color:#fff; 
+  transition: transform 0.3s; 
+  text-align:center; 
+}
+.share-buttons a:hover { 
+  transform: scale(1.1); 
+}
+.share-buttons a.whatsapp { background:#25D366; }
+.share-buttons a.tiktok { background:#000; }
+
+/* Chatbot */
+#chatbot { 
+  position:fixed; 
+  bottom:20px; 
+  right:20px; 
+  background:#fff; 
+  padding:10px; 
+  border:2px solid #000; 
+  width:250px; 
+  border-radius:10px; 
+  z-index:9999; 
+}
+#chatbot-messages { 
+  height:150px; 
+  overflow:auto; 
+  border-bottom:1px solid #ccc; 
+  margin-bottom:5px; 
+  padding:5px; 
+}
+#chatbot-input { 
+  width:100%; 
+  margin-bottom:5px; 
+  padding:5px; 
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width:768px){
+  #frank-main { width:60%; }
+  .gallery-images figure { width:45%; }
+  .gallery-images img { height:180px; }
+}
+
+@media screen and (max-width:480px){
+  #hero { padding:40px 10px; }
+  #frank-main { width:80%; }
+  .gallery-images figure { width:90%; }
+  .gallery-images img { height:160px; }
+  #chatbot { width:200px; }
+}
