@@ -30,7 +30,7 @@
         <figcaption>Frank with the community – supporters holding banners, including local football events and gatherings.</figcaption>
       </figure>
       <figure>
-        <img src="images/frank-farm.jpg" alt="Frank at his farm">
+        <img src="images/frank-farm.jpg" alt="Frank at his farm" class="portrait">
         <figcaption>Frank on his cattle farm – leader by example, showing dedication to agriculture and local development.</figcaption>
       </figure>
     </div>
@@ -72,11 +72,11 @@
     <h2>Follow the Frank Tumwebaze Movement</h2>
     <div class="social-buttons">
       <a class="whatsapp" href="https://chat.whatsapp.com/IdUpY9g84OIGoJJQrgNURI?mode=wwt" target="_blank">
-        WhatsApp Group <br>
+        Follow us on WhatsApp <br>
         <small>Before entering, violation of WhatsApp rules will lead to exit</small>
       </a>
       <a class="tiktok" href="https://www.tiktok.com/@franktumwebazemovement" target="_blank">
-        TikTok <br>
+        Follow on TikTok <br>
         <small>Encouraging content creation and sharing for the movement</small>
       </a>
     </div>
@@ -93,8 +93,15 @@
     </div>
   </section>
 
+  <!-- Chatbot Open Button -->
+  <button id="open-chatbot">Chat with us 💬</button>
+
   <!-- Chatbot -->
-  <div id="chatbot">
+  <div id="chatbot" style="display:none;">
+    <div id="chatbot-header">
+      <span>FrankBot</span>
+      <button id="close-chatbot">X</button>
+    </div>
     <div id="chatbot-messages"></div>
     <input type="text" id="chatbot-input" placeholder="Ask why vote Frank">
     <button onclick="sendMessage()">Send</button>

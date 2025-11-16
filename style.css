@@ -85,6 +85,10 @@ button:hover {
 .gallery-images img:hover { 
   transform: scale(1.05); 
 }
+.gallery-images img.portrait { 
+  object-fit:contain; 
+  height:auto; 
+}
 .gallery-images figcaption { 
   margin-top:8px; 
   font-size:0.9em; 
@@ -134,13 +138,13 @@ button:hover {
 }
 .social-buttons a { 
   display:inline-block; 
-  padding:10px 20px; 
+  padding:12px 25px; 
   color:#fff; 
   border-radius:8px; 
   text-decoration:none; 
-  transition: transform 0.3s; 
   text-align:center; 
-  font-size:1em;
+  font-weight:bold; 
+  transition: transform 0.3s; 
 }
 .social-buttons a:hover { 
   transform: scale(1.1); 
@@ -152,7 +156,7 @@ button:hover {
   background:#000; 
 }
 
-/* Share This Site Section */
+/* Share Buttons */
 #share-site { 
   background:#fff; 
   text-align:center; 
@@ -166,23 +170,35 @@ button:hover {
 }
 .share-buttons a { 
   display:inline-block; 
-  padding:10px 20px; 
+  padding:12px 25px; 
   border-radius:8px; 
   text-decoration:none; 
   color:#fff; 
-  transition: transform 0.3s; 
+  font-weight:bold; 
   text-align:center; 
-}
-.share-buttons a:hover { 
-  transform: scale(1.1); 
+  transition: transform 0.3s; 
 }
 .share-buttons a.whatsapp { background:#25D366; }
 .share-buttons a.tiktok { background:#000; }
+.share-buttons a:hover { transform: scale(1.1); }
 
 /* Chatbot */
-#chatbot { 
+#open-chatbot { 
   position:fixed; 
   bottom:20px; 
+  right:20px; 
+  background:#FFD700; 
+  color:#000; 
+  border:none; 
+  border-radius:50px; 
+  padding:12px 20px; 
+  font-weight:bold; 
+  z-index:1000; 
+  cursor:pointer; 
+}
+#chatbot { 
+  position:fixed; 
+  bottom:70px; 
   right:20px; 
   background:#fff; 
   padding:10px; 
@@ -190,6 +206,14 @@ button:hover {
   width:250px; 
   border-radius:10px; 
   z-index:9999; 
+  display:none; 
+}
+#chatbot-header { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+  font-weight:bold; 
+  margin-bottom:5px; 
 }
 #chatbot-messages { 
   height:150px; 
@@ -209,6 +233,7 @@ button:hover {
   #frank-main { width:60%; }
   .gallery-images figure { width:45%; }
   .gallery-images img { height:180px; }
+  #chatbot { width:220px; }
 }
 
 @media screen and (max-width:480px){
@@ -217,4 +242,5 @@ button:hover {
   .gallery-images figure { width:90%; }
   .gallery-images img { height:160px; }
   #chatbot { width:200px; }
+  #open-chatbot { padding:10px 15px; font-size:14px; }
 }

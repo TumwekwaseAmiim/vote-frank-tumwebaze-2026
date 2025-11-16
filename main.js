@@ -37,7 +37,29 @@ setInterval(() => {
   countdownEl.innerHTML = days > 0 ? `Days until election: ${days}` : "Election Day is here!";
 }, 1000);
 
-// Enhanced Interactive Chatbot
+// Chatbot open/close logic
+const chatbot = document.getElementById('chatbot');
+const openBtn = document.createElement('button');
+openBtn.id = 'open-chatbot';
+openBtn.textContent = 'Chat with us 💬';
+document.body.appendChild(openBtn);
+
+const header = document.createElement('div');
+header.id = 'chatbot-header';
+header.innerHTML = 'FrankBot <span id="close-chatbot" style="cursor:pointer;">✖</span>';
+chatbot.prepend(header);
+
+document.getElementById('close-chatbot').addEventListener('click', () => {
+  chatbot.style.display = 'none';
+  openBtn.style.display = 'block';
+});
+
+openBtn.addEventListener('click', () => {
+  chatbot.style.display = 'block';
+  openBtn.style.display = 'none';
+});
+
+// Chatbot AI logic
 function sendMessage() {
   const inputRaw = document.getElementById('chatbot-input').value.trim();
   const input = inputRaw.toLowerCase();
