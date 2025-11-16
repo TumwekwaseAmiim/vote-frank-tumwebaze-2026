@@ -1,19 +1,22 @@
-/* General Styles */
+/* ==================== General Styles ==================== */
 body { 
   margin:0; 
-  font-family: Arial, sans-serif; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   background:#fff; 
-  color:#000; 
+  color:#222; 
 }
 h1, h2, h3 { 
   color:#FFD700; 
   text-align:center; 
   margin-bottom:20px; 
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 p { 
   text-align:center; 
   font-size:1.1em; 
   margin:15px 20px; 
+  color:#222; 
+  line-height:1.5;
 }
 button { 
   cursor:pointer; 
@@ -23,27 +26,31 @@ button {
   padding:12px 25px; 
   background:#000; 
   color:#FFD700; 
-  transition: transform 0.3s; 
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 button:hover { 
   transform: scale(1.05); 
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
 
-/* Hero Section */
+/* ==================== Hero Section ==================== */
 #hero { 
-  background:#000; 
+  background:linear-gradient(135deg, #000, #111); 
   color:#FFD700; 
   padding:60px 20px; 
   text-align:center; 
   display:flex; 
   flex-direction:column; 
   align-items:center; 
+  box-shadow: inset 0 0 50px rgba(255, 215, 0, 0.2);
 }
 #nrm-logo { 
   width:15%; 
   max-width:100px; 
   margin-bottom:15px; 
   height:auto; 
+  filter: drop-shadow(0 0 5px #FFD700);
 }
 #frank-main { 
   width:40%; 
@@ -51,18 +58,29 @@ button:hover {
   border-radius:10px; 
   animation: float 3s ease-in-out infinite; 
   height:auto; 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 @keyframes float { 
   0%,100%{transform:translateY(0);} 
   50%{transform:translateY(-15px);} 
 }
 
-/* Gallery Section */
+/* ==================== Gallery Section ==================== */
 #gallery { 
   text-align:center; 
   padding:50px 20px; 
-  background:#fff; 
+  background:#fdf6e3; 
 }
+
+#gallery h2 {
+  color: #000; /* black text */
+  text-shadow: 0 0 10px rgba(255,215,0,0.7), 
+               0 0 15px rgba(255,215,0,0.5);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
 .gallery-images { 
   display:flex; 
   flex-wrap:wrap; 
@@ -74,16 +92,19 @@ button:hover {
   width:30%; 
   max-width:300px; 
   text-align:center; 
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-images figure:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 .gallery-images img { 
   width:100%; 
   height:200px; 
   object-fit:cover; 
-  border-radius:10px; 
-  transition: transform 0.3s; 
-}
-.gallery-images img:hover { 
-  transform: scale(1.05); 
 }
 .gallery-images img.portrait { 
   object-fit:contain; 
@@ -91,98 +112,158 @@ button:hover {
 }
 .gallery-images figcaption { 
   margin-top:8px; 
-  font-size:0.9em; 
-  color:#000; 
+  font-size:0.95em; 
+  color:#222; 
 }
 
-/* Achievements Section */
+/* ==================== Achievements Section ==================== */
 #achievements { 
   padding:50px 20px; 
   background:#fff; 
+  color:#222; 
+  text-align:center;
+}
+#achievements h2, #achievements p {
+  color:#222; 
+  font-weight:600;
+  text-shadow: 1px 1px 3px rgba(255,215,0,0.3);
 }
 
-/* Why Vote Section */
+/* ==================== Why Vote Section ==================== */
 #why-vote { 
-  background:#000; 
+  background:#111; 
   color:#FFD700; 
   padding:50px 20px; 
+  text-align:center;
+  box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.2);
+}
+#why-vote h2, #why-vote p { 
+  color:#FFD700; 
+  font-weight:bold; 
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  line-height:1.5;
 }
 
-/* Vote Now Section */
+/* ==================== Vote Now Section ==================== */
 #vote-now { 
-  background:#FFD700; 
-  color:#000; 
+  background: linear-gradient(135deg, #FFDE59, #FFD700); 
+  color:#222; 
   text-align:center; 
   padding:50px 20px; 
+  border-radius: 20px; 
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+#vote-now h2, #vote-now p { 
+  color:#222; 
+  font-weight:bold; 
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
 }
 #vote-now button { 
+  background:#222; 
+  color:#FFDE59; 
+  border-radius: 50px; 
+  padding:12px 30px; 
+  font-size:16px; 
+  font-weight:bold;
+  cursor:pointer; 
   animation: bounce 2s infinite; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+#vote-now button:hover { 
+  background:#000; 
+  color:#FFD700; 
+  transform: scale(1.1);
 }
 @keyframes bounce { 
   0%,100%{transform:translateY(0);} 
   50%{transform:translateY(-10px);} 
 }
 
-/* Social Follow Section */
-#follow { 
-  background:#000; 
-  color:#FFD700; 
-  text-align:center; 
-  padding:50px 20px; 
-}
-.social-buttons { 
-  display:flex; 
-  justify-content:center; 
-  flex-wrap:wrap; 
-  gap:15px; 
-}
-.social-buttons a { 
-  display:inline-block; 
-  padding:12px 25px; 
-  color:#fff; 
-  border-radius:8px; 
-  text-decoration:none; 
-  text-align:center; 
-  font-weight:bold; 
-  transition: transform 0.3s; 
-}
-.social-buttons a:hover { 
-  transform: scale(1.1); 
-}
-.social-buttons a.whatsapp { 
-  background:#25D366; 
-}
-.social-buttons a.tiktok { 
-  background:#000; 
+.social-buttons a.tiktok {
+  background: #000; 
+  color: #fff;
+  border: 2px solid #ff0050; /* TikTok pink */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Share Buttons */
-#share-site { 
-  background:#fff; 
-  text-align:center; 
-  padding:50px 20px; 
+.social-buttons a.tiktok::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  border: 2px solid #00f2ea; /* TikTok cyan */
+  opacity: 0.5;
+  filter: blur(3px);
 }
+
+/* ==================== Share This Campaign ==================== */
+#share-site { 
+  background: linear-gradient(135deg, #FFD700, #FFB800);
+  text-align:center; 
+  padding:60px 20px; 
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+#share-site h2 { 
+  font-size: 2em; 
+  color: #000; 
+  font-weight: bold; 
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  margin-bottom:20px; 
+}
+
+#share-site p { 
+  font-size:1.2em; 
+  color:#222; 
+  margin-bottom:30px; 
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.3);
+}
+
+/* Animated Share Buttons */
 .share-buttons { 
   display:flex; 
   justify-content:center; 
   flex-wrap:wrap; 
-  gap:15px; 
+  gap:20px; 
 }
 .share-buttons a { 
   display:inline-block; 
-  padding:12px 25px; 
-  border-radius:8px; 
-  text-decoration:none; 
-  color:#fff; 
+  padding:15px 35px; 
+  border-radius:50px; 
+  font-size:16px; 
   font-weight:bold; 
-  text-align:center; 
-  transition: transform 0.3s; 
+  text-decoration:none; 
+  color:#FFD700; 
+  background:#000; 
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  position: relative;
 }
-.share-buttons a.whatsapp { background:#25D366; }
-.share-buttons a.tiktok { background:#000; }
-.share-buttons a:hover { transform: scale(1.1); }
+.share-buttons a::after {
+  content:'';
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  border-radius:50px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
+.share-buttons a:hover::after {
+  opacity:1;
+}
+.share-buttons a:hover {
+  transform: scale(1.1);
+  color:#fff;
+  background:#222;
+}
 
-/* Chatbot */
+/* ==================== Chatbot ==================== */
 #open-chatbot { 
   position:fixed; 
   bottom:20px; 
@@ -195,6 +276,7 @@ button:hover {
   font-weight:bold; 
   z-index:1000; 
   cursor:pointer; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 #chatbot { 
   position:fixed; 
@@ -207,6 +289,7 @@ button:hover {
   border-radius:10px; 
   z-index:9999; 
   display:none; 
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 #chatbot-header { 
   display:flex; 
@@ -228,7 +311,7 @@ button:hover {
   padding:5px; 
 }
 
-/* Responsive Media Queries */
+/* ==================== Responsive Media Queries ==================== */
 @media screen and (max-width:768px){
   #frank-main { width:60%; }
   .gallery-images figure { width:45%; }
