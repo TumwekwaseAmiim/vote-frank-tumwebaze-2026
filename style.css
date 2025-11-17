@@ -72,13 +72,18 @@ button:hover {
   background:#fdf6e3; 
 }
 
-#gallery h2 {
-  color: #000; /* black text */
-  text-shadow: 0 0 10px rgba(255,215,0,0.7), 
-               0 0 15px rgba(255,215,0,0.5);
+#follow h2 {
+  color: #0a2a43; /* deep blue for contrast */
   font-weight: 800;
+  font-size: 2em;
+  text-align: center;
   letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(255,215,0,0.4); /* subtle golden glow */
+  margin-bottom: 25px;
 }
+
+
+
 
 
 .gallery-images { 
@@ -262,6 +267,8 @@ button:hover {
   color:#fff;
   background:#222;
 }
+
+
 
 /* ==================== Chatbot ==================== */
 #open-chatbot { 

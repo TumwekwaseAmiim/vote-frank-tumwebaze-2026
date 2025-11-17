@@ -142,3 +142,24 @@ function sendMessage() {
 document.getElementById('chatbot-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') sendMessage();
 });
+
+// ===== Universal Share Button =====
+document.getElementById("share-btn")?.addEventListener("click", async () => {
+  const siteUrl = "https://TumwekwaseAmiim.github.io/vote-frank-tumwebaze-2026/";
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Frank Tumwebaze 2026 Campaign",
+        text: "Support Frank Tumwebaze for Kibale East 2026. Visit the official campaign site:",
+        url: siteUrl
+      });
+      document.getElementById("share-status").innerText = "Shared successfully!";
+    } catch {
+      document.getElementById("share-status").innerText = "Share canceled.";
+    }
+  } else {
+    navigator.clipboard.writeText(siteUrl);
+    document.getElementById("share-status").innerText = "Link copied to clipboard!";
+  }
+});
