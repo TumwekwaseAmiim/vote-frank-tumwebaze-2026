@@ -98,26 +98,48 @@
     📤 Share Campaign
   </button>
 
+  <div id="share-options" style="display:none; margin-top:10px; gap:10px;">
+    <a href="https://api.whatsapp.com/send?text=Check%20out%20Frank%20Tumwebaze%202026%20Campaign!%20https://TumwekwaseAmiim.github.io/vote-frank-tumwebaze-2026/" 
+       target="_blank" class="share-link whatsapp">WhatsApp</a>
+    <a href="https://twitter.com/intent/tweet?text=Support%20Frank%20Tumwebaze%202026!%20https://TumwekwaseAmiim.github.io/vote-frank-tumwebaze-2026/" 
+       target="_blank" class="share-link twitter">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://TumwekwaseAmiim.github.io/vote-frank-tumwebaze-2026/" 
+       target="_blank" class="share-link facebook">Facebook</a>
+  </div>
+
   <p id="share-status" style="margin-top:10px; color:#555;"></p>
 </section>
 
+<!-- Chatbot Open Button -->
+<button id="open-chatbot">Chat with us 💬</button>
 
-
-  <!-- Chatbot Open Button -->
-  <button id="open-chatbot">Chat with us 💬</button>
-
-  <!-- Chatbot -->
-  <div id="chatbot" style="display:none;">
-    <div id="chatbot-header">
-      <span>FrankBot</span>
-      <button id="close-chatbot">X</button>
-    </div>
-    <div id="chatbot-messages"></div>
-    <input type="text" id="chatbot-input" placeholder="Ask why vote Frank">
-    <button onclick="sendMessage()">Send</button>
+<!-- Chatbot -->
+<div id="chatbot" style="display:none;">
+  <div id="chatbot-header">
+    <span>FrankBot</span>
+    <button id="close-chatbot">X</button>
   </div>
+  <div id="chatbot-messages"></div>
+  <input type="text" id="chatbot-input" placeholder="Ask why vote Frank">
+  <button onclick="sendMessage()">Send</button>
+</div>
 
-  <!-- JS -->
-  <script src="main.js"></script>
+<!-- JS -->
+<script src="main.js"></script>
+
+<script>
+  const shareBtn = document.getElementById("share-btn");
+  const shareOptions = document.getElementById("share-options");
+
+  shareBtn.addEventListener("click", () => {
+    // Toggle the share options visibility
+    if (shareOptions.style.display === "none") {
+      shareOptions.style.display = "flex";
+    } else {
+      shareOptions.style.display = "none";
+    }
+  });
+</script>
+
 </body>
 </html>

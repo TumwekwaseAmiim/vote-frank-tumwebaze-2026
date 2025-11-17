@@ -144,23 +144,26 @@ document.getElementById('chatbot-input').addEventListener('keydown', function(e)
   if (e.key === 'Enter') sendMessage();
 });
 
-// ===== Universal Share Button =====
-document.getElementById("share-btn")?.addEventListener("click", async () => {
-  const siteUrl = "https://TumwekwaseAmiim.github.io/vote-frank-tumwebaze-2026/";
+// ===== Share Campaign Button Toggle =====
+const shareBtn = document.getElementById("share-btn");
+const shareOptions = document.getElementById("share-options");
+const shareStatus = document.getElementById("share-status");
 
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "Frank Tumwebaze 2026 Campaign",
-        text: "Support Frank Tumwebaze for Kibale East 2026. Visit the official campaign site:",
-        url: siteUrl
-      });
-      document.getElementById("share-status").innerText = "Shared successfully!";
-    } catch {
-      document.getElementById("share-status").innerText = "Share canceled.";
-    }
+shareBtn.addEventListener("click", () => {
+  // Toggle the share buttons visibility
+  if (shareOptions.style.display === "none") {
+    shareOptions.style.display = "flex";
+    shareStatus.innerText = "";
   } else {
-    navigator.clipboard.writeText(siteUrl);
-    document.getElementById("share-status").innerText = "Link copied to clipboard!";
+    shareOptions.style.display = "none";
   }
 });
+
+// Optional: copy link to clipboard when clicking a share link
+document.querySelectorAll(".share-link").forEach(link => {
+  link.addEventListener("click", () => {
+    navigator.clipboard.writeText(link.href);
+    shareStatus.innerText = "Link copied to clipboard! You can now share it.";
+  });
+});
+
