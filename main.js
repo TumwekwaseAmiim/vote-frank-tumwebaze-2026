@@ -40,6 +40,7 @@ ScrollReveal().reveal('#achievements p', {
 // ===== Countdown to Election =====
 const electionDate = new Date("January 15, 2026 07:00:00").getTime();
 const countdownEl = document.getElementById('countdown');
+
 function updateCountdown() {
   const now = new Date().getTime();
   const diff = electionDate - now;
