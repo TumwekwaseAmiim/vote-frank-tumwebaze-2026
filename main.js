@@ -1,145 +1,178 @@
-// ===== Typed.js Hero Slogan =====
-var typed = new Typed('#typed-slogan', {
-  strings: [
-    "Vote Hon. Frank – Proven Leadership!",
-    "NRM Loyal. Museveni Supports Him!",
-    "Experience, Vision, and Community Focus!"
-  ],
-  typeSpeed: 50,
-  backSpeed: 30,
-  loop: true
+// ===== Typed.js for Hero & Why Vote Section =====
+document.addEventListener("DOMContentLoaded", function () {
+  const heroSlogan = new Typed('#typed-slogan', {
+    strings: [
+      "Leadership that Delivers 📌",
+      "Experience. Dedication. Frank Tumwebaze",
+      "Development Across Kibale East"
+    ],
+    typeSpeed: 50,
+    backSpeed: 25,
+    backDelay: 2500,
+    loop: true
+  });
+
+  const whyVote = new Typed('#typed-why', {
+    strings: [
+      "Proven service in education, health, infrastructure, and community development.",
+      "Empowering youth, farmers, and women through tangible initiatives.",
+      "Lobbied government for water, electricity, and technology programs.",
+      "A trusted NRM leader with deep roots in Kibale East."
+    ],
+    typeSpeed: 50,
+    backSpeed: 25,
+    backDelay: 3000,
+    loop: true
+  });
 });
 
-// ===== Typed.js Why Vote Section =====
-var typedWhy = new Typed('#typed-why', {
-  strings: [
-    "Proven experience and deep connection to Kibale East.",
-    "Personally funds interventions and delivers results.",
-    "Lobbies government projects to reach every corner of the constituency.",
-    "Trusted, honest, and committed to community development."
-  ],
-  typeSpeed: 40,
-  backSpeed: 25,
-  loop: true
-});
-
-// ===== ScrollReveal for gallery and achievements =====
-ScrollReveal().reveal('.gallery-images img', {
-  duration: 1500,
-  distance: '50px',
-  origin: 'bottom',
-  interval: 200
-});
-ScrollReveal().reveal('#achievements p', {
-  duration: 1500,
-  distance: '50px',
-  origin: 'bottom',
-  interval: 300
-});
-
-// ===== Countdown to Election =====
-const electionDate = new Date("January 15, 2026 07:00:00").getTime();
-const countdownEl = document.getElementById('countdown');
+// ===== Countdown Timer to Election =====
+const countdownElement = document.getElementById('countdown');
+const electionDate = new Date("January 15, 2026 00:00:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
-  const diff = electionDate - now;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  countdownEl.innerHTML = days > 0 ? `Days until election: ${days}` : "Election Day is here!";
+  const distance = electionDate - now;
+
+  if (distance < 0) {
+    countdownElement.innerHTML = "Election Day is Here! 🗳️";
+    clearInterval(countdownInterval);
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownElement.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until Election`;
 }
-updateCountdown(); // initial call
-setInterval(updateCountdown, 1000 * 60 * 60); // update every hour
 
-// ===== Chatbot Open/Close =====
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+
+// ===== Campaign Song Download =====
+const downloadBtn = document.getElementById('download-song');
+const campaignAudio = document.getElementById('campaign-audio');
+
+downloadBtn.addEventListener('click', () => {
+  // Get the audio source URL
+  const audioSrc = campaignAudio.querySelector('source').src;
+  
+  // Create a temporary link element
+  const a = document.createElement('a');
+  a.href = audioSrc;
+  a.download = 'frank_campaign_song.mp3'; // filename for download
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+
+// ===== Chatbot Functionality =====
 const chatbot = document.getElementById('chatbot');
-const openBtn = document.getElementById('open-chatbot');
-const closeBtn = document.getElementById('close-chatbot');
+const openChatBtn = document.getElementById('open-chatbot');
+const closeChatBtn = document.getElementById('close-chatbot');
 
-openBtn.addEventListener('click', () => {
-  chatbot.style.display = 'block';
-  openBtn.style.display = 'none';
-});
+openChatBtn.addEventListener('click', () => { chatbot.style.display = 'block'; });
+closeChatBtn.addEventListener('click', () => { chatbot.style.display = 'none'; });
 
-closeBtn.addEventListener('click', () => {
-  chatbot.style.display = 'none';
-  openBtn.style.display = 'block';
-});
-
-// ===== Chatbot Message Sending =====
 function sendMessage() {
   const inputRaw = document.getElementById('chatbot-input').value.trim();
   const input = inputRaw.toLowerCase();
   const messages = document.getElementById('chatbot-messages');
   if (!input) return;
 
-  // Display user's message
-  messages.innerHTML += `<div><strong>You:</strong> ${inputRaw}</div>`;
+  // Display user message exactly as typed
+  messages.innerHTML += `<div class="user-msg"><strong>You:</strong> ${inputRaw}</div>`;
 
-  let reply = "";
-
-  // Greetings
-  if (/^(hi|hello|hey|h|he|hell)/.test(input)) {
-    reply = "Hello! 👋 I am FrankBot, your campaign assistant. Do you want to know about Frank's achievements, voting info, or technology innovation in Kibale East?";
-  }
-  // Vote or Frank questions
-  else if (input.includes("frank") || input.includes("vote") || input.includes("support")) {
-    reply = "Hon. Frank Tumwebaze is NRM loyal, trusted, and deeply connected to Kibale East. Would you like a summary of his achievements in all 9 subcounties or details about a specific area?";
-  }
-  // Subcounty / achievements request
-  else if (input.includes("bihanga") || input.includes("lyakahungu") || input.includes("nkoma") || input.includes("nkoma-katalyeba") || input.includes("bwizi") || input.includes("ntonwa") || input.includes("biguli") || input.includes("kabuye")) {
-    reply = `In ${inputRaw.charAt(0).toUpperCase() + inputRaw.slice(1)}, Frank has improved education, health, roads, community development, and access to water & electricity. Would you like me to show other subcounties too?`;
-  }
-  // Education / schools
-  else if (input.includes("education") || input.includes("school") || input.includes("classroom") || input === "s") {
-    reply = "Frank has built classrooms, provided desks, solar panels, ICT tools, and integrated schools into government programs. Would you like info on health or infrastructure next?";
-  }
-  // Health
-  else if (input.includes("health") || input.includes("hospital") || input.includes("clinic")) {
-    reply = "Frank has built health centers, supplied equipment, and upgraded existing facilities. Would you like info on roads or community development next?";
-  }
-  // Roads / infrastructure
-  else if (input.includes("road") || input.includes("infrastructure") || input.includes("bridge")) {
-    reply = "Frank opened and improved access roads, and handed over major routes to the central government. Want to know about education or health next?";
-  }
-  // Community development / youth
-  else if (input.includes("youth") || input.includes("community") || input.includes("farmers")) {
-    reply = "Frank empowered youth, farmers, and boda-boda unions with tools, livestock, and machinery. Do you want details on education or infrastructure?";
-  }
-  // Water & electricity
-  else if (input.includes("water") || input.includes("electricity") || input.includes("power")) {
-    reply = "Frank lobbied government to extend clean water systems and electricity to remote villages. Would you like info on other sectors?";
-  }
-  // Technology / innovation
-  else if (input.includes("technology") || input.includes("innovation") || input.includes("tech")) {
-    reply = "Kibale East is embracing technology thanks to youth and community initiatives. Eng. Amiim Tumwekwase leads tech projects for education and agriculture. Want to know more about local tech programs?";
-  }
-  // Election / voting info
-  else if (input.includes("january") || input.includes("15") || input.includes("election")) {
-    reply = "Elections are on January 15, 2026. Voting for Hon. Frank ensures proven leadership and continued development in Kibale East. Share this site with friends to support the movement! #FrankMyMP #FrankMyChoice";
-  }
-  // Yes / confirmation
-  else if (input.includes("yes") || input.includes("sure") || input.includes("ok") || input.includes("y")) {
-    reply = "Great! 😊 You can ask about education, health, roads, community development, water & electricity, or technology. Type the topic name or subcounty.";
-  }
-  // No / decline
-  else if (input.includes("no") || input.includes("nah") || input.includes("n")) {
-    reply = "No worries! You can still ask me about Frank’s achievements, voting info, or tech in Kibale East anytime.";
-  }
-  // Fallback for unknown questions
-  else {
-    reply = "Hmm 🤔 I’m not sure about that. You can ask about education, health, roads, community development, water & electricity, technology, or voting info. Which one would you like?";
-  }
-
-  // Display chatbot reply
-  messages.innerHTML += `<div><strong>FrankBot:</strong> ${reply}</div>`;
-
-  // Clear input and scroll smoothly
-  const inputBox = document.getElementById('chatbot-input');
-  inputBox.value = '';
+  // Bot typing simulation
+  const typingDiv = document.createElement("div");
+  typingDiv.classList.add("bot-msg");
+  typingDiv.innerHTML = "<em>FrankBot is typing...</em>";
+  messages.appendChild(typingDiv);
   messages.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+
+  setTimeout(() => {
+    let reply = "";
+
+  // ===== Greetings =====
+if (/^(hi|hello|hey|hell)/.test(input)) {
+  reply = "Hello! 👋 I am FrankBot (Eng. Amiim AI), your campaign assistant. Ask me about Frank's achievements, voting info, or tech initiatives in Kibale East.";
+}
+// ===== Health =====
+else if (input.includes("health") || input.includes("hospital") || input.includes("clinic")) {
+  reply = "Frank has built health centers, supplied equipment, and upgraded existing facilities across Kibale East. You can also ask about roads, water & electricity, or technology.";
 }
 
-// ===== Send on Enter key =====
+    // ===== Polite responses =====
+    else if (input.includes("thanks") || input.includes("thank you")) {
+      reply = "You're welcome! 😊 Frank and our team appreciate your support.";
+    }
+    else if (input.includes("you're welcome") || input.includes("your welcome")) {
+      reply = "Glad to assist! Do you want to know more about Frank's achievements?";
+    }
+    // ===== Vote / Frank questions =====
+    else if (input.includes("frank") || input.includes("vote") || input.includes("support")) {
+      reply = "Hon. Frank Tumwebaze is an NRM loyal leader, trusted and connected to Kibale East. Ask for achievements in all 9 subcounties or a specific one.";
+    }
+    // ===== Subcounty Achievements =====
+    else if (["bihanga","lyakahungu","nkoma","nkoma-katalyeba","bwizi","ntonwa","biguli","kabuye"].some(sub => input.includes(sub))) {
+      reply = `In ${inputRaw.charAt(0).toUpperCase() + inputRaw.slice(1)}, Frank has improved education, health, roads, community development, and access to water & electricity. You can ask about another subcounty or sector.`;
+    }
+    // ===== Education =====
+    else if (input.includes("education") || input.includes("school") || input.includes("classroom") || input === "s") {
+      reply = "Frank has built classrooms, provided desks, solar panels, and ICT tools, integrating schools into government programs. You can ask about health, roads, or community next.";
+    }
+    // ===== Health =====
+    else if (input.includes("health") || input.includes("hospital") || input.includes("clinic")) {
+      reply = "Frank has built health centers, supplied equipment, and upgraded existing facilities across Kibale East. You can also ask about roads, water & electricity, or technology.";
+    }
+    // ===== Roads / Infrastructure =====
+    else if (input.includes("road") || input.includes("infrastructure") || input.includes("bridge")) {
+      reply = "Frank opened and improved access roads and bridges, handing major routes to central government. You can ask about education, health, or community development next.";
+    }
+    // ===== Community / Youth =====
+    else if (input.includes("youth") || input.includes("community") || input.includes("farmers")) {
+      reply = "Frank empowered youth, farmers, and boda-boda unions with tools, livestock, and machinery. You can ask about education, roads, or health.";
+    }
+    // ===== Water & Electricity =====
+    else if (input.includes("water") || input.includes("electricity") || input.includes("power")) {
+      reply = "Frank lobbied government to extend clean water and electricity to remote villages. You can also ask about health, roads, or community.";
+    }
+    // ===== Technology / Innovation =====
+    else if (input.includes("technology") || input.includes("innovation") || input.includes("tech")) {
+      reply = "Kibale East embraces technology thanks to youth and community initiatives. Eng. Amiim leads tech projects for education and agriculture. You can ask about other sectors too.";
+    }
+    // ===== Music / Campaign Song =====
+    else if (input.includes("music") || input.includes("song") || input.includes("audio") || input.includes("campaign song")) {
+      reply = "Check out the campaign song by Eng. Amiim in the music section 🎵. You can play or download it.";
+    }
+    // ===== Election / Voting Info =====
+    else if (input.includes("january") || input.includes("15") || input.includes("election") || input.includes("vote info") || input.includes("voting")) {
+      reply = "Elections are on January 15, 2026. Voting for Hon. Frank ensures proven leadership and continued development in Kibale East. #FrankMyMP #FrankMyChoice";
+    }
+    // ===== Yes / No Responses =====
+    else if (input.includes("yes") || input.includes("ok") || input.includes("sure") || input.includes("y")) {
+      reply = "Great! 😊 You can ask about education, health, roads, community, water & electricity, technology, or music.";
+    }
+    else if (input.includes("no") || input.includes("nah") || input.includes("n")) {
+      reply = "No worries! You can still ask about Frank’s achievements or voting info anytime.";
+    }
+    // ===== Fallback =====
+    else {
+      reply = "Hmm 🤔 I’m not sure about that. Try asking about education, health, roads, community, water/electricity, technology, music, or voting info.";
+    }
+
+    // Replace typing with actual reply
+    typingDiv.innerHTML = `<strong>FrankBot:</strong> ${reply}`;
+    messages.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+
+  }, 800); // Typing delay
+}
+
+// Send message on Enter
 document.getElementById('chatbot-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') sendMessage();
 });
@@ -150,7 +183,6 @@ const shareOptions = document.getElementById("share-options");
 const shareStatus = document.getElementById("share-status");
 
 shareBtn.addEventListener("click", () => {
-  // Toggle the share buttons visibility
   if (shareOptions.style.display === "none") {
     shareOptions.style.display = "flex";
     shareStatus.innerText = "";
@@ -159,11 +191,12 @@ shareBtn.addEventListener("click", () => {
   }
 });
 
-// Optional: copy link to clipboard when clicking a share link
+// Share links open platform
 document.querySelectorAll(".share-link").forEach(link => {
-  link.addEventListener("click", () => {
-    navigator.clipboard.writeText(link.href);
-    shareStatus.innerText = "Link copied to clipboard! You can now share it.";
+  link.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent default immediate navigation
+    const url = link.href;
+    window.open(url, '_blank');
+    shareStatus.innerText = "Opened sharing link! ✅";
   });
 });
-
